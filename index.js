@@ -27,15 +27,15 @@ function fn(array) {
             }
 
         } else if (array[i] === 100) {
-            if(cashier['25'] >= 3) {
+            if((cashier['25'] >= 1) && (cashier['50'] >= 1)) {
+                cashier['50'] -= 1;
+                cashier['25'] -= 1;
+                cashier['100'] += 1;
+            } else if(cashier['25'] >= 3) {
                 cashier['25'] -= 3;
                 cashier['100'] += 1;
 
-            } else if((cashier['25'] >= 1) && (cashier['50'] >= 1)) {
-                cashier['25'] -= 1;
-                cashier['50'] -= 1;
-                cashier['100'] += 1;
-            } else {
+            }  else {
                 return false;
             }
 
@@ -43,8 +43,9 @@ function fn(array) {
             return false;
         }
     }
+    console.log(cashier);
     return true;
 }
 
-var x = fn([25, 50]);
+var x = fn([25, 25, 25, 50, 100]);
 console.log(x);
